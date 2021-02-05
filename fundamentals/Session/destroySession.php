@@ -5,4 +5,4 @@ session_start();
 session_destroy();
 
 // removes individual elememts session remains
-unset($_SESSION['name']);
+// unset($_SESSION['name']);

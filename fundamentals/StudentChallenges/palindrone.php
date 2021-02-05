@@ -1,0 +1,29 @@
+<?php
+if(isset($_POST['submit'])){
+    $word = $_POST['word'];
+    $reverseword = strrev($word);
+    if($word === $reverseword){
+        echo "definetly a palindrone";
+    } else {
+        echo "not a palindrone my person";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Palindrones</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="text" name="word" id="word">
+        <input type="submit" name="submit">
+    </form>
+</body>
+</html>
