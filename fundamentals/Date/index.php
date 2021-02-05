@@ -1,5 +1,7 @@
 <?php
 
+echo phpinfo();
+
 date_default_timezone_set('Australia/Brisbane');
 
 //https://www.php.net/manual/en/datetime.format.php
