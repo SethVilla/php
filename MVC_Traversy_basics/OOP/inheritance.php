@@ -16,6 +16,8 @@ class Customer extends User {
     private $balance;
 
     public function __construct($name, $age, $balance){
+
+        //Parent constructor 
         parent::__construct($name, $age);
         $this->balance = $balance;
     }

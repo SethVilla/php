@@ -1,0 +1,17 @@
+# Apache Directives
+#enable mod_rewrite in MAMP PRO Apache
+#disable multiviews for distinction between test vs test.php
+#rewrite url to directory name not including local host
+#cond if file not found continue to rewrite rule routes to index.php
+#?=url= turns to public/url/
+
+#https://www.whoishostingthis.com/resources/htaccess/
+#https://stackoverflow.com/questions/12551382/what-does-1-qsa-l-mean-in-my-htaccess-file/45226969
+<IfModule mod_rewrite.c>
+Options -Multiviews
+RewriteEngine On
+RewriteBase /MVC_Traversy_App/public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
