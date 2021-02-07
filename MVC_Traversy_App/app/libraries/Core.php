@@ -9,30 +9,48 @@
 class Core {
     protected $currentController = 'Pages';
     protected $currentMethod ='index';
-    protected $params = [];
+    // set this to include empty string because 7.4 php errors
+    protected $params = [''];
 
     public function __construct(){
         $url = $this->getUrl();
-
         //https://www.php.net/manual/en/function.file-exists.php
         // check if file exists in this case for controllers
         //https://www.php.net/manual/en/function.ucwords.php
         //Uppercase first letter for controllers since will be capital
-        if(file_exists('../app/controllers/' . ucwords($url[0]). '.php')){
-
-            // if exists set as controller
+        // added a check to see if url has a value was throwing an error if $url[0] was empty 
+        if( isset($url) && file_exists('../app/controllers/' . ucwords($url[0]). '.php')){
+            // if exists set as new controller
             $this->currentController = ucwords($url[0]);
 
             // unset index 0
-            print_r($url[0]);
             unset($url[0]);
         }
 
         // require the controller 
         require_once '../app/controllers/' . $this->currentController . '.php';
-        
+
         // Instantiate controller class
         $this->currentController = new $this->currentController;
+
+        //check for second path of url
+        if(isset($url[1])){
+            if(method_exists($this->currentController, $url[1])){
+                $this->currentMethod= $url[1];
+                unset($url[1]);
+            }
+        }
+
+        //get Params 
+        $this->params = $url ? array_values($url) : [''];
+
+     print_r( $this->params);
+
+        //call a callback with array of params
+        // https://www.php.net/manual/en/function.call-user-func-array.php
+        // if(count($this->params) > 0) {
+            call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
+        // }
     }
 
     public function getUrl(){
@@ -50,7 +68,6 @@ class Core {
 
         //check to see if url is set
         if(isset($_GET['url'])){
-            print_r($_GET['url']. " " . "hi");
             //https://www.php.net/manual/en/function.rtrim.php
             //trim but add white space
             $url = rtrim($_GET['url'], '/');
