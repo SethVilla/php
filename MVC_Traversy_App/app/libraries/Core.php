@@ -41,10 +41,8 @@ class Core {
             }
         }
 
-        //get Params 
+        
         $this->params = $url ? array_values($url) : [''];
-
-     print_r( $this->params);
 
         //call a callback with array of params
         // https://www.php.net/manual/en/function.call-user-func-array.php

@@ -6,12 +6,12 @@ class Pages extends Controller {
     }
 
     public function index(){
-        // $this->view('hello');
-        echo 'index now';
+        $data = ['title' => 'Crimson'];
+        $this->view('pages/index', $data);
     }
 
     public function about($id){
-        $this->view('hello');
+        $this->view('pages/about');
 echo  $id;
     }
 }

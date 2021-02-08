@@ -18,14 +18,11 @@ class Controller {
     //load view
 
     public function view($view, $data = []){
-        echo 'here 1';
         // check for view file
         if(file_exists('../app/views/' . $view . '.php')){
-            echo  'here';
             require_once '../app/views/' . $view . '.php';
         } else {
             // view does not exist
-            echo  'here';
             die('view does not exist');
         }
     }

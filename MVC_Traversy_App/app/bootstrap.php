@@ -1,4 +1,9 @@
 <?php
+
+// Load config 
+
+require_once 'config/config.php';
+
 // load libraries 
 
 require_once 'libraries/core.php';
