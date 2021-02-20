@@ -35,3 +35,43 @@ symfony server:start
  list all available commands
 
  bin/console
+
+    bin/console make:controller DefaultController 
+
+        makes controller and sample view
+
+- untrack and remove files from repo or fix nested git 
+
+https://stackoverflow.com/questions/62056294/github-folders-have-a-white-arrow-on-them
+
+https://stackoverflow.com/questions/3833561/why-doesnt-git-ignore-my-specified-file/3833675
+
+ git rm --cached sites/default/settings.php
+
+ Symfony MVC
+
+ 1. Routes 
+
+    Maps url Controller methods 
+    typically exist above a controller method as annotation 
+
+ 2. Controller 
+    
+    Call entities (if needed) and load views 
+    src/controller/NameController.php
+
+ 3. Entities / Model
+ 
+    work with database 
+    src/Entity/EntityName.php
+
+ 4. Views 
+
+    Give Html for the user 
+    templates/viewname.html.twig
+
+ Unit test erros add this:
+
+    ?ServerVersion=5.7
+    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/your_database_name?ServerVersion=5.7
+

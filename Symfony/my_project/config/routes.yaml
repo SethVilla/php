@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+
+### can use this file to handle routing in order to use this create a default controller with an index route
+## create with namespace App/Controller as src is defined as App in composer.json
