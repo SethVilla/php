@@ -1,0 +1,37 @@
+- Run Symfony server locally with php
+
+php -S 127.0.0.1:8000 -t public
+
+OR 
+
+symfony server:start
+
+
+- Symfony Folder Structure 
+
+1. Bin for unit tests
+
+2. Config - Configuration Files
+
+3. Public server looks here and reads index.php File
+
+4 . src all files made by programmer
+
+5. var cache files sessions 
+
+6. vendor for external php libraries
+
+
+- Check Server Requirements 
+
+ symfony check:requirements
+
+ - Composer Mac installation debug
+ 
+ https://stackoverflow.com/questions/34028282/composer-command-not-found/54233422
+
+ - bin console command
+
+ list all available commands
+
+ bin/console

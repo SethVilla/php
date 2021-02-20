@@ -10,3 +10,5 @@
 *
 */
 define('APPROOT', dirname(dirname(__FILE__)));
+
+//URL root;
