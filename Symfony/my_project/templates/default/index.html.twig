@@ -1,3 +1,4 @@
+{#  extends base twig template file#}
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello DefaultController!{% endblock %}
@@ -16,5 +17,21 @@
         <li>Your controller at <code><a href="{{ '/Users/seth/Sites/php/Symfony/my_project/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/Users/seth/Sites/php/Symfony/my_project/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
     </ul>
+
+    <ul>
+        {% for user in users %}
+            <li>{{user}}</li>
+        {% endfor %}
+    </ul>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+
+alert('ArteNauta')
+
+</script>
+
 {% endblock %}

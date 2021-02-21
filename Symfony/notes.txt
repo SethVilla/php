@@ -2,6 +2,12 @@
 
 php -S 127.0.0.1:8000 -t public
 
+https://stackoverflow.com/questions/50747664/symfony4-annotation-routing-does-not-work
+
+composer require symfony/apache-pack
+
+.htacess files are needed for apache routing
+
 OR 
 
 symfony server:start
@@ -48,6 +54,10 @@ https://stackoverflow.com/questions/3833561/why-doesnt-git-ignore-my-specified-f
 
  git rm --cached sites/default/settings.php
 
+ - Composer require orm 
+
+    installs db package
+
  Symfony MVC
 
  1. Routes 
@@ -74,4 +84,27 @@ https://stackoverflow.com/questions/3833561/why-doesnt-git-ignore-my-specified-f
 
     ?ServerVersion=5.7
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/your_database_name?ServerVersion=5.7
+
+
+   - Database Configuration
+
+      config.inc.php for php 
+
+      .env for Symfony
+
+      Connection Error
+
+      SQLSTATE[HY000] [2002] Connection refused
+
+      configure doctrine.yaml to accept database connections
+
+      https://stackoverflow.com/questions/20037484/mysql-connection-refused-on-mamp-pro
+
+      https://stackoverflow.com/questions/50907667/how-can-i-connect-via-symfony-4-to-mysql-database-created-with-mamp/50908912
+
+
+
+Misc 
+
+traceroute google.com
 

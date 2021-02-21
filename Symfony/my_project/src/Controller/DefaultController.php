@@ -10,11 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {   // dynamic value to route /{name}
-    #[Route('/default/{name}', name: 'default')]
-    public function index($name): Response
-    {   
 
-       /*
+    #[Route('/', name: 'default')]
+    public function index(): Response
+    {
+
+        /*
         *  render first arg mandatory View file path
         *  Array key and value pairs
         *
@@ -23,9 +24,12 @@ class DefaultController extends AbstractController
         *  new Response()
         */
 
-        // return $this->render('default/index.html.twig', [
-        //     'controller_name' => 'DefaultController',
-        // ]);
+        $users = ['Cory', 'Seth', 'Cyd', 'Kyle'];
+
+        return $this->render('default/index.html.twig', [
+            'controller_name' => 'DefaultController',
+            'users' => $users
+        ]);
 
         // return $this->json('Hello');
 
@@ -33,14 +37,13 @@ class DefaultController extends AbstractController
 
         // return $this->redirect('https://symfony.com/');
 
-        return $this->redirectToRoute('test');
-
-
+        // return $this->redirectToRoute('test');
     }
 
-    #[Route('/default/{name}', name: 'test')]
-    public function test($name): Response
-    {   
+    // do not redirect to dynamic parameters
+    #[Route('/test', name: 'test')]
+    public function test(): Response
+    {
 
         return new Response('test route');
     }
