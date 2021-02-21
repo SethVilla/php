@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,8 +24,30 @@ class DefaultController extends AbstractController
         *  
         *  new Response()
         */
+        // 
+        // $entityManager = $this->getDoctrine()->getManager();
 
-        $users = ['Cory', 'Seth', 'Cyd', 'Kyle'];
+        // // Entity Model
+        // $user1 = new User;
+        // $user2 = new User;
+        // $user3 = new User;
+        // $user4 = new User;
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+
+        //    $user1->setName($users[0]);
+        //    $user2->setName($users[1]);
+        //    $user3->setName($users[2]);
+        //    $user4->setName($users[3]);
+
+        //     // instance of the object to save
+        //     $entityManager->persist($user1);
+        //     $entityManager->persist($user2);
+        //     $entityManager->persist($user3);
+        //     $entityManager->persist($user4);
+
+        //     // saves to db
+        //     $entityManager->flush();
 
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
