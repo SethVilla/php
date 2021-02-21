@@ -20,7 +20,8 @@
 
     <ul>
         {% for user in users %}
-            <li>{{user.name}}</li>
+        {# twig method access index loop.index0 = start at index 0 #}
+            <li>{{user.name}} - you won {{gifts[loop.index0]}} </li> 
         {% endfor %}
     </ul>
 </div>

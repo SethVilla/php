@@ -8,9 +8,17 @@ composer require symfony/apache-pack
 
 .htacess files are needed for apache routing
 
+bin/console cache:clear --env=dev
+
+run above and restart server 
+
+configure apache server in httpd.conf
+
 OR 
 
 symfony server:start
+
+
 
 
 - Symfony Folder Structure 
@@ -46,6 +54,10 @@ symfony server:start
 
         makes controller and sample view
 
+   bin/console debug:container
+
+         check all available services in container
+
 - untrack and remove files from repo or fix nested git 
 
 https://stackoverflow.com/questions/62056294/github-folders-have-a-white-arrow-on-them
@@ -70,7 +82,7 @@ https://stackoverflow.com/questions/3833561/why-doesnt-git-ignore-my-specified-f
     Call entities (if needed) and load views 
     src/controller/NameController.php
 
- 3. Entities / Model
+ 3. Entities / Model -> Related to Repository which queries database
  
     work with database 
     src/Entity/EntityName.php
@@ -101,6 +113,34 @@ https://stackoverflow.com/questions/3833561/why-doesnt-git-ignore-my-specified-f
       https://stackoverflow.com/questions/20037484/mysql-connection-refused-on-mamp-pro
 
       https://stackoverflow.com/questions/50907667/how-can-i-connect-via-symfony-4-to-mysql-database-created-with-mamp/50908912
+
+   Migrattion files for database Updates Insertions
+
+      - Create tables
+      bin/console make:migration 
+
+      - execute table creation
+      bin/console make:migration:migrate
+
+
+
+  - Symfony Services 
+
+   "Classes that do something useful"
+
+   AutoWiring
+
+   Service Container 
+
+      DB class 
+
+      Mailer Class 
+
+      Our own Class
+
+Logger 
+
+   composer require Logger
 
 
 

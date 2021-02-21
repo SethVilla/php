@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Services\GiftService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +14,8 @@ class DefaultController extends AbstractController
 {   // dynamic value to route /{name}
 
     #[Route('/', name: 'default')]
-    public function index(): Response
+    public function index(GiftService $gifts): Response
     {
-
         /*
         *  render first arg mandatory View file path
         *  Array key and value pairs
@@ -24,7 +24,8 @@ class DefaultController extends AbstractController
         *  
         *  new Response()
         */
-        // 
+
+        // Responsible for CRUD operations
         // $entityManager = $this->getDoctrine()->getManager();
 
         // // Entity Model
@@ -34,13 +35,17 @@ class DefaultController extends AbstractController
         // $user4 = new User;
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
-
         //    $user1->setName($users[0]);
         //    $user2->setName($users[1]);
         //    $user3->setName($users[2]);
         //    $user4->setName($users[3]);
 
-        //     // instance of the object to save
+        // $gifts = ['flowers', 'books', 'piano', 'money' ];
+        // shuffle($gifts);
+
+
+
+        //     // instance of the object to save || preparation
         //     $entityManager->persist($user1);
         //     $entityManager->persist($user2);
         //     $entityManager->persist($user3);
@@ -51,7 +56,8 @@ class DefaultController extends AbstractController
 
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
-            'users' => $users
+            'users' => $users,
+            'gifts' => $gifts->gifts
         ]);
 
         // return $this->json('Hello');
@@ -63,11 +69,5 @@ class DefaultController extends AbstractController
         // return $this->redirectToRoute('test');
     }
 
-    // do not redirect to dynamic parameters
-    #[Route('/test', name: 'test')]
-    public function test(): Response
-    {
-
-        return new Response('test route');
-    }
+    
 }
