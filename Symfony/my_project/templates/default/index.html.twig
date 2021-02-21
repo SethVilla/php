@@ -25,6 +25,25 @@
         {% endfor %}
     </ul>
 </div>
+
+{# loop through app. flashes single vs all messages #}
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{message}}
+    </div>
+{% endfor %}
+
+{% for label, messages in app.flashes %}
+
+    {% for message in messages %}
+
+        {{message}}
+        
+    {% endfor %}
+    
+{% endfor %}
+
+
 {% endblock %}
 
 {% block javascripts %}
