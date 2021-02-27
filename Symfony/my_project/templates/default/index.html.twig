@@ -1,8 +1,9 @@
 {#  extends base twig template file#}
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
-
+{% block title %}Hello {{controller_name}}!{% endblock %}
+    {% set users = [{name: 'Cory'}, {name: 'Seth'}, {name: 'Cyd'}, {name: 'Kyle'}]%}
+    {% set string = "some string \n from \n databse"%}
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -10,7 +11,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ controller_name|upper}}! ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -44,13 +45,54 @@
 {% endfor %}
 
 
+{# https://stackoverflow.com/questions/59154335/twig-if-statement-within-for-loop-opening-tag #}
+{% for user in users %}
+
+{% if user.name == 'Seth' %}
+
+<p>{{user.name}}</p>
+
+{% else %}
+
+No Users Found
+{% endif %}
+
+{% endfor %}
+
+
+{{include('includes/subview.html.twig', { 'users': users} )}}
+
+{# {% for i in 1..10 %}
+
+    <div class="{{ cycle(['even'| 'odd'])}}"
+        {{i}}
+    </div>
+
+{% endfor %} #}
+<br>
+{# common practice to get path #}
+{{path('home')}} <br>
+{{url('home')}} <br>
+{{asset('images/logo.png')}} <br>
+{{ absolute_url(asset('images/logo.png')) }}
+
+{# <img src="{{ absolute_url(asset('images/door.jpg'))}}" alt="Symfony 4 course" /> #}
+
 {% endblock %}
 
 {% block javascripts %}
 
+{# prevent overwrite #}
+{# {{parent()}} #}
 <script>
 
-// alert('ArteNauta')
+
+
+var route = "{{ string|escape('js') }}";
+
+alert(route)
+
+{# alert('ArteNauta') #}
 
 </script>
 

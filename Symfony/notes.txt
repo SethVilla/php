@@ -10,17 +10,20 @@ composer require symfony/apache-pack
 
 .htacess files are needed for apache routing
 
+
+run to restart server 
+
 bin/console cache:clear --env=dev
-
-run above and restart server 
-
-configure apache server in httpd.conf
 
 OR 
 
 symfony server:start
 
 
+bin/console cache:clear
+
+
+configure apache server in httpd.conf
 
 
 - Symfony Folder Structure 
@@ -153,3 +156,17 @@ traceroute google.com
 cookie inspector 
 
 chrome://settings/siteData
+
+
+Config
+
+   services.yaml 
+
+   can bind parameters to a specific controller and instantiate 
+
+
+Downloads 
+
+   Cannot guess MimeTypes 
+
+   composer require symfony/mime
